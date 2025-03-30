@@ -15,7 +15,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "<p><strong>E-mail:</strong> " . htmlspecialchars($_POST["email"]) . "</p>";
     echo "<p><strong>Data pobytu:</strong> " . htmlspecialchars($_POST["data_pobytu"]) . "</p>";
     echo "<p><strong>Godzina przyjazdu:</strong> " . htmlspecialchars($_POST["godzina_przyjazdu"]) . "</p>";
-
+    echo "<p><strong>Dodatkowe osoby:</strong><br>";
+    $liczba_osob = htmlspecialchars($_POST["liczba_osob"]);
+    for ($i = 1; $i <= $liczba_osob; $i++) {
+        echo "<p><strong>Osoba " .$i . " </strong> </p>";
+        echo "<p><strong>Imię:</strong> " . htmlspecialchars($_POST["osoby"][$i]["imie"]) . "</p>";
+        echo "<p><strong>Nazwisko:</strong> " . htmlspecialchars($_POST["osoby"][$i]["nazwisko"]) . "</p>";
+    }
 
     if (!empty($_POST["udogodnienia"])) {
         echo "<p><strong>Udogodnienia:</strong> " . implode(", ", array_map('htmlspecialchars', $_POST["udogodnienia"])) . "</p>";
