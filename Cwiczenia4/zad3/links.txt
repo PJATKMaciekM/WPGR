@@ -1,0 +1,4 @@
+www.google.com;google
+www.youtube.com;youtube
+www.platk.pl;pjatk
+www.php.com;php
