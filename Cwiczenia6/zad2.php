@@ -1,36 +1,37 @@
 <?php
 class Product {
     private $name, $price, $quantity;
-    function __construct($name, $price, $quantity) {
+    function __construct($name, $price, $quantity)
+    {
         $this->name = $name;
         $this->price = $price;
         $this->quantity = $quantity;
     }
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
-    public function setName($name)
+    public function setName($name): void
     {
         $this->name = $name;
     }
-    public function getPrice()
+    public function getPrice(): int
     {
         return $this->price;
     }
-    public function setPrice($price)
+    public function setPrice($price): void
     {
         $this->price = $price;
     }
-    public function getQuantity()
+    public function getQuantity(): int
     {
         return $this->quantity;
     }
-    public function setQuantity($quantity)
+    public function setQuantity($quantity): void
     {
         $this->quantity = $quantity;
     }
-    public function __toString()
+    public function __toString(): string
     {
         return 'Name: ' . $this->name . ', Price: ' . $this->price . ', Quantity: ' . $this->quantity;
     }
@@ -42,18 +43,18 @@ class Cart {
     {
         $this->products = array();
     }
-    public function addProduct(Product $product)
+    public function addProduct(Product $product): void
     {
         $this->products[] = $product;
     }
-    public function removeProduct(Product $product)
+    public function removeProduct(Product $product): void
     {
         $key = array_search($product, $this->products);
         if ($key !== false) {
             unset($this->products[$key]);
         }
     }
-    public function getTotalPrice()
+    public function getTotalPrice(): int
     {
         $total = 0;
         foreach ($this->products as $product) {
@@ -65,8 +66,8 @@ class Cart {
     {
         echo('Products in cart: ');
         foreach ($this->products as $product) {
-            echo('Product: ' . $product->getName() . ', ');
-            echo('Price: ' . $product->getPrice() . ', ');
+            echo('Product: ' . $product->getName());
+            echo('Price: ' . $product->getPrice());
             echo('Quantity: ' . $product->getQuantity());
         }
         echo('Total: ') . $this->getTotalPrice();
