@@ -5,19 +5,16 @@
 </head>
 <body>
 <?php
-if(isSet($_COOKIE['ctr']) && $_COOKIE['ctr'] > 5) {
-    echo ("Gratulacje!<br>");
+if(isSet($_COOKIE['ctr'])) {
+    $ctr = $_COOKIE['ctr'] + 1;
+}else{
+    $ctr = 1;
 }
-if(!isSet($_COOKIE['name'])) {
-    setcookie('name', 'user', time() + 3600);
-    setcookie('ctr', 0, time() + 3600);
-}
-if(isSet($_COOKIE['name']) && $_COOKIE['name'] == 'user') {
-    $ctr = $_COOKIE['ctr'];
-    $ctr++;
-    setcookie('ctr', $ctr, time() + 3600);
-    echo ($ctr);
+setcookie('ctr', $ctr, time() + (3600 * 24 * 30));
+echo "<p> Number of visits: " . $ctr . "</p>";
 
+if($ctr > 5) {
+    echo "<p> Congratulations! </p>";
 }
 ?>
 </body>
